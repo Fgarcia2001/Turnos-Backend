@@ -2,43 +2,39 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 using BCrypt.Net;
+using Turnos.Domain.Entities;
 
 namespace GestionTurnos.Domain.Entities
 {
 
-    public enum Rol { 
-        
-        Admin, // Se encarga de la administración del sistema.
-        Recepcionista, // Se encarga del cobro, y la gestion de todos los turnos de cualquier profesional(Puede agregar turnos ).
-        Profesional // Se encarga de gestionar sus propios turnos, y de atender a los clientes.
-    }
     public class Staff : BaseEntity
     {
 
-        [MaxLength(50)]
-        public required string Name { get; set; } = string.Empty;
+        [MaxLength(100)]
+        public required string FullName { get; set; }
 
 
-        [MaxLength(50)]
+        [MaxLength(100)]
         [EmailAddress]
-        public required string Email { get; set; } = string.Empty;
+        public required string Email { get; set; }
+
         [MaxLength(50)]
         [Phone]
-        public required string Phone { get; set; } = string.Empty;
+        public required string PhoneNumber { get; set; } = string.Empty;
 
-        private string _password = string.Empty;
+        [MaxLength(300)]
+        public string? PhotoUrl { get; set; }
 
-        public string Password
-        {
-            get => _password; set => _password = BCrypt.Net.BCrypt.HashPassword(value);
-        }
-        [MaxLength(200)]
-        public string LinkPhoto { get; set; } = string.Empty;
+        public Guid BusinessId { get; set; }
+        public Business Business { get; set; } = null!;
 
-        public Rol Rol { get; set; }
+        public Guid? UserId { get; set; }
+        public User? User { get; set; }
 
-        // Propiedad de navegación inversa: Un profesional tiene muchos turnos
-        public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+        public ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+        public ICollection<Schedule> Schedules { get; set; } = new List<Schedule>();
+        public ICollection<StaffService> StaffServices { get; set; } = new List<StaffService>();
+
 
     }
 }

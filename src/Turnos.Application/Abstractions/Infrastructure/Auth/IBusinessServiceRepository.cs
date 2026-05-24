@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Turnos.Application.Abstractions.Infrastructure.Auth
 {
-    public interface IServiceRepository : IBaseRepository<Service>
+    public interface IBusinessServiceRepository : IBaseRepository<BusinessService>
     {
 
     }

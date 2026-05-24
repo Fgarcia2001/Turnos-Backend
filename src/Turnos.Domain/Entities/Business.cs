@@ -1,26 +1,28 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Turnos.Domain.Entities;
 
 namespace GestionTurnos.Domain.Entities
 {
-    public enum StatusBusiness { Habilitado,Deshabilitado }
+    public enum StatusBusiness {Deshabilitado, Habilitado }
+
     public enum TypeBusiness { Barberia, Spa}
+
+
     public class Business : BaseEntity
     {
-        [Required, StringLength(100)]
-        public string Name { get; set; } = string.Empty;
-        [Required]
-        public string Url { get; set; } = string.Empty;
-        public string? UrlLogo { get; set; }
-        public StatusBusiness IsActive { get; set; } = StatusBusiness.Habilitado;
-        public TypeBusiness TypeBusiness { get; set; }
+        public string? Name { get; set; } 
+        public string? Address { get; set; }
+        public string? PhoneNumber { get; set; }
+        public string? Description { get; set; }
+
+        public StatusBusiness Status { get; set; }
+        public TypeBusiness Type { get; set; }
 
 
-        // Relación con Clientes
-        public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
-
-        public virtual ICollection<Service> Services { get; set; } = new List<Service>();
-
-        public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+        public  ICollection<User> Users { get; set; } = new List<User>();
+        public  ICollection<Client> Clients { get; set; } = new List<Client>();
+        public  ICollection<BusinessService> Services { get; set; } = new List<BusinessService>();
+        public  ICollection<Staff> StaffMembers { get; set; } = new List<Staff>();
 
     }
 }

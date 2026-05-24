@@ -6,23 +6,31 @@ using System.Text;
 
 namespace GestionTurnos.Domain.Entities
 {
-    public class Client :BaseEntity
+    public class Client : BaseEntity
     {
 
-        [MaxLength(50)]
-        public required string Name { get; set; } = string.Empty;
+        [MaxLength(100)]
+        public required string FullName { get; set; } = string.Empty;
 
-        [MaxLength(50)]
+        [MaxLength(100)]
         [EmailAddress]
         public required string Email { get; set; } = string.Empty;
+
+        [MaxLength(30)]
         [Phone]
         public required string Phone { get; set; } = string.Empty;
-        [Required]
 
+        [Required]
         public required DateTime BirthDay { get; set; }
 
+        public Guid BusinessId { get; set; }
+        public Business Business { get; set; } = null!;
+
+
         // Propiedades de navegación inversa
-        public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+
+
+        public ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
        
 
 

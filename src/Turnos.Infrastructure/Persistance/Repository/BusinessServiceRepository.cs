@@ -6,9 +6,9 @@ using Turnos.Application.Abstractions.Infrastructure.Auth;
 
 namespace Turnos.Infrastructure.Persistance.Repository
 {
-    public class ServiceRepository : BaseRepository<Service>, IServiceRepository
+    public class BusinessServiceRepository : BaseRepository<BusinessService>, IBusinessServiceRepository
     {
-        public ServiceRepository(FMCTurnosDbContext context) : base(context)
+        public BusinessServiceRepository(FMCTurnosDbContext context) : base(context)
         {
 
         }

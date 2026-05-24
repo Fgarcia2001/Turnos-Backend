@@ -7,9 +7,10 @@ namespace GestionTurnos.Domain.Entities
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        [Required]
+        
         public bool IsDeleted { get; set; } = false;
-        public DateTime UpdateDateTime { get; set; } = DateTime.Now;
-        public DateTime? DeleteDateTime { get; set; }
+        public DateTime CreatedDateTime { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedDateTime { get; set; } = DateTime.UtcNow;
+        public DateTime? DeletedDateTime { get; set; }
     }
 }

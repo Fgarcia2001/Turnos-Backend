@@ -57,8 +57,8 @@ namespace Turnos.Infrastructure.Persistance.Repository
             if (EntityToDelete != null)
             {
                 EntityToDelete.IsDeleted = true;
-                EntityToDelete.DeleteDateTime = DateTime.UtcNow;
-                EntityToDelete.UpdateDateTime = DateTime.UtcNow;
+                EntityToDelete.DeletedDateTime = DateTime.UtcNow;
+                EntityToDelete.UpdatedDateTime = DateTime.UtcNow;
                 _dbSet.Update(EntityToDelete);
                 SaveChanges();
             }
