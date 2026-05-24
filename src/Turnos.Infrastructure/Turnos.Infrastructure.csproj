@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="ExternalServices\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Persistance\Repository\" />
   </ItemGroup>
 
   <ItemGroup>
