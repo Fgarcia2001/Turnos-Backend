@@ -12,7 +12,7 @@ namespace GestionTurnos.Domain.Entities
         Recepcionista, // Se encarga del cobro, y la gestion de todos los turnos de cualquier profesional(Puede agregar turnos ).
         Profesional // Se encarga de gestionar sus propios turnos, y de atender a los clientes.
     }
-    public class Staff 
+    public class Staff : BaseEntity
     {
 
         [MaxLength(50)]

@@ -20,33 +20,23 @@ namespace GestionTurnos.Domain.Entities
     public class Appointment : BaseEntity
     {
        
-        public required Guid StaffId { get; set; }
-
-        
+        public required Guid StaffId { get; set; } 
         public required Staff Staff { get; set; } = null!;
 
-        public required Guid ClientId { get; set; }
 
-  
+        public required Guid ClientId { get; set; }  
         public required Client Client { get; set; } = null!;
 
 
   
-        public required Guid ServiceId { get; set; }
-
-       
+        public required Guid ServiceId { get; set; } 
         public required Service Service { get; set; } = null!;
 
 
     
         public required DateTime Day { get; set; }
-
-       
         public required TimeSpan StartTime { get; set; }
-
-        
         public required TimeSpan EndTime { get; set; }
-
 
         [MaxLength(500)]
         public string? Observation { get; set; }
