@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Turnos.Application.Abstractions.Infrastructure.Auth;
+using Turnos.Infrastructure.Persistance;
 using Turnos.Infrastructure.Persistance.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,9 +17,15 @@ builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 builder.Services.AddScoped<IBusinessRepository, BusinessRepository>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IScheduleRepository, ScheduleRepository>();
-builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
+builder.Services.AddScoped<IBusinessServiceRepository, BusinessServiceRepository>();
 builder.Services.AddScoped<IStaffRepository, StaffRepository>();
 
+builder.Services.AddDbContext<FMCTurnosDbContext>(options =>
+{
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+        );
+});
 
 var app = builder.Build();
 

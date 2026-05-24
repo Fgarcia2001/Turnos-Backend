@@ -11,7 +11,8 @@ namespace GestionTurnos.Domain.Entities
             public required DayOfWeek DayOfWeek { get; set; } // Enum de C# (0 = Domingo, 1 = Lunes...)
             public required TimeSpan StartTime { get; set; } 
             public required TimeSpan EndTime { get; set; }   
-            public required int SlotDurationMinutes { get; set; } 
+            public Guid StaffId { get; set; }
+            public Staff Staff { get; set; } = null!;
                                                          
     }
 }
